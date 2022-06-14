@@ -17,7 +17,7 @@ $ sudo gem install cocoapods
 ```
 
 ## Unit Tests
-I have added XCTestCase as part of Unit testing. So far the coverage is ~79% and is always subject to improvement. Just switch to 'LBGCodingTaskTests' target to run the test cases.
+I have added XCTestCase as part of Unit testing. So far the coverage is ~80% and is always subject to improvement. Just switch to 'LBGCodingTaskTests' target to run the test cases.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
