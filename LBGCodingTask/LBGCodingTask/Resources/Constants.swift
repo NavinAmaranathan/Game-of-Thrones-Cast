@@ -13,6 +13,7 @@ enum Constants {
     static let customCellIdentifier = "custom_cell"
     static let customCellNibName = "CharacterCell"
     static let systemImagePhoto = "photo"
+    static let systemImagePerson = "person"
 }
 
 enum APIEndPoints: String {

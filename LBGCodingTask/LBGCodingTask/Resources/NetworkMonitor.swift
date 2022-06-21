@@ -28,7 +28,7 @@ final class NetworkMonitor {
                 debugPrint("Not Connected")
             }
             NotificationCenter.default.post(name: NSNotification.Name(NotificationNames.connectivityIdentifier.rawValue),
-                                                    object: nil)
+                                            object: nil)
         }
 
         let queue = DispatchQueue(label: "NetworkMonitor")

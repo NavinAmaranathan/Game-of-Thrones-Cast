@@ -8,6 +8,15 @@
 import UIKit
 import SDWebImage
 
+protocol CharacterDetailViewProvider {
+    var fullName: String { get }
+    var firstName: String { get }
+    var lastName: String { get }
+    var family: String { get }
+    var title: String { get }
+    var imageURL: String { get }
+}
+
 class CharacterDetailViewController: UIViewController {
 
     // MARK: Outlets
@@ -28,7 +37,7 @@ class CharacterDetailViewController: UIViewController {
 
     // MARK: Properties
 
-    var model: CharacterDetailModel?
+    var model: CharacterDetailViewProvider?
     private var viewModel: CharacterDetailViewModelData = CharacterDetailViewModel()
 
     // MARK: Life cycle methods
@@ -46,10 +55,11 @@ class CharacterDetailViewController: UIViewController {
         title = model?.fullName
         firstName.text = model?.firstName
         lastName.text = model?.lastName
-        titleLabel.text = model?.titleLabel
-        family.text = model?.familyName
-        imageView.sd_setImage(with: URL(string: model!.characterImage),
-                              placeholderImage: UIImage(systemName: "person"),
+        titleLabel.text = model?.title
+        family.text = model?.family
+        guard let imageUrl = model?.imageURL else { return }
+        imageView.sd_setImage(with: URL(string: imageUrl),
+                              placeholderImage: UIImage(systemName: Constants.systemImagePerson),
                               options: .continueInBackground,
                               context: nil)
     }

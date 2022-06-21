@@ -15,8 +15,8 @@ extension CharacterListViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let detailVC = storyboard?.instantiateViewController(
             withIdentifier: StoryboardIdentifiers.characterDetail.rawValue) as? CharacterDetailViewController else {
-                  return
-              }
+                return
+            }
         let model = viewModel.getSelectedCharacterModel(listItem: characters[indexPath.row])
         detailVC.model = model
         navigationController?.pushViewController(detailVC, animated: true)

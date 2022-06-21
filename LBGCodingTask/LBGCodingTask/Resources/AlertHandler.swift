@@ -31,7 +31,7 @@ final class AlertHandler {
         presentAlert(over: baseVC, type: type, completionHandler: completionHandler)
     }
 
-    /// Private method to handle alert presentation
+    /// Handles alert presentation
     private func presentAlert(over baseVC: UIViewController, type: AlertData, completionHandler: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             let alert = UIAlertController(title: type.title, message: type.description, preferredStyle: .alert)

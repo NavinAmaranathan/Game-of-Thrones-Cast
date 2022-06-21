@@ -20,7 +20,7 @@ enum APIError: AlertData {
         case .failure:
             return "Oops"
         case .invalidData, .invalidRequest, .invalidUrl:
-          return "Sorry"
+            return "Sorry"
         case .nonSuccessStatusCode:
             return "Don't worry"
         }

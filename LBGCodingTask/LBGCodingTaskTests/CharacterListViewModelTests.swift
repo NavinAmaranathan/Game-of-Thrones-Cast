@@ -28,7 +28,7 @@ class CharacterListViewModelTests: XCTestCase {
                 return
             }
             let firstCharacter = result.first
-            XCTAssertEqual(firstCharacter?.fullName, Values.sampleCharacterDetail.fullName)
+            XCTAssertEqual(firstCharacter?.fullName, Values.sampleCharacter.fullName)
             expectation.fulfill()
         } catch {
             XCTFail("test_fetch_API_Data failed")
@@ -57,41 +57,29 @@ class CharacterListViewModelTests: XCTestCase {
                                                                                               family: "House Targaryen",
                                                                                               image: "https://demo.character.image",
                                                                                               imageURL: "https://demo.character.image"))
-        XCTAssertEqual(sutCharacterDetail, Values.sampleCharacterDetail)
-    }
-
-    func test_CharacterCellModel_Creation() {
-        let sutRow = sut_viewModel?.getRowModel(item: Character(id: 0,
-                                                                firstName: "Daenerys",
-                                                                lastName: "Targaryen",
-                                                                fullName: "Daenerys Targaryen",
-                                                                title: "Mother of Dragons",
-                                                                family: "House Targaryen",
-                                                                image: "https://demo.character.image",
-                                                                imageURL: "https://demo.character.image"))
-        XCTAssertEqual(sutRow, Values.sampleRow)
+        XCTAssertNotNil(sutCharacterDetail)
     }
 
     func test_Show_CharacterDetail_Screen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let sut_DetailViewController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifiers.characterDetail.rawValue) as? CharacterDetailViewController {
-            sut_DetailViewController.model = Values.sampleCharacterDetail
-            XCTAssertEqual(sut_DetailViewController.model?.fullName, Values.sampleCharacterDetail.fullName)
+            sut_DetailViewController.model = Values.sampleCharacter
+            XCTAssertEqual(sut_DetailViewController.model?.fullName, Values.sampleCharacter.fullName)
             sut_DetailViewController.loadViewIfNeeded()
         }
     }
 }
 
 extension CharacterListViewModelTests {
-
+    
     enum Values {
-        static var sampleCharacterDetail: CharacterDetailModel = CharacterDetailModel(fullName: "Daenerys Targaryen",
-                                                                                      firstName: "Daenerys",
-                                                                                      lastName: "Targaryen",
-                                                                                      familyName: "House Targaryen",
-                                                                                      titleLabel: "Mother of Dragons",
-                                                                                      characterImage: "https://demo.character.image")
-        static var sampleRow: CharacterCellModel = CharacterCellModel(name: "Daenerys Targaryen",
-                                                                      image: "https://demo.character.image")
+        static var sampleCharacter = Character(id: 0,
+                                               firstName: "Daenerys",
+                                               lastName: "Targaryen",
+                                               fullName: "Daenerys Targaryen",
+                                               title: "Mother of Dragons",
+                                               family: "House Targaryen",
+                                               image: "https://demo.character.image",
+                                               imageURL: "https://demo.character.image")
     }
 }

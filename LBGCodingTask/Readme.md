@@ -1,6 +1,6 @@
 # LBGCodingTask
 
-LBGCodingTask is an iOS application that helps us to view the cast information of *Game of Thrones* series - A famous TV series adaptation of Fiction Books written by *George R. R. Martin*.
+LBGCodingTask is an iOS - iPhone specific application that helps us to view the cast information of *Game of Thrones* series - A famous TV series adaptation of Fiction Books written by *George R. R. Martin*.
 
 ## What's in it ??
 - On launch user would be able to see a table of Game of Thrones characters. Contents include the images and names of each character.
@@ -8,7 +8,7 @@ LBGCodingTask is an iOS application that helps us to view the cast information o
 
 ## Installation
 
-Use any browser to visit [github](https://) to download LBGCodingTask application. On successful download, run pod install on the project, open LBGCodingTask.workspace using Xcode to run the application through device/ simulator for a walk through.
+Use any browser to visit [github](https://github.com/NavinAmaranathan/LBGCodingTask.git) to download LBGCodingTask application. On successful download, run pod install on the project, open LBGCodingTask.workspace using Xcode to run the application through device/ simulator for a walk through.
 
 ## Dependancy Manager
 Used Cocoapods as the dependancy manager. You can install cocoapods to your machine by following steps from [guide](https://guides.cocoapods.org/using/getting-started.html).

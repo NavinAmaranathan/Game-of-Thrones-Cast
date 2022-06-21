@@ -1,5 +1,5 @@
 //
-//  CharacterModel.swift
+//  Character.swift
 //  LBGCodingTask
 //
 //  Created by Navi on 09/06/22.
@@ -20,3 +20,5 @@ struct Character: Decodable {
         case imageURL = "imageUrl"
     }
 }
+
+extension Character: CharacterDetailViewProvider, CharacterCellViewProvider {}
