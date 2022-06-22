@@ -1,6 +1,6 @@
 # LBGCodingTask
 
-LBGCodingTask is an iOS - iPhone specific application that helps us to view the cast information of *Game of Thrones* series - A famous TV series adaptation of Fiction Books written by *George R. R. Martin*.
+LBGCodingTask is an iOS - iPhone specific application that helps us to view the cast information of *Game of Thrones* series - A famous TV series adaptation of Fiction Books written by *George R. R. Martin*. And also you can experience this application in Dark mode also.
 
 ## What's in it ??
 - On launch user would be able to see a table of Game of Thrones characters. Contents include the images and names of each character.
@@ -17,7 +17,7 @@ $ sudo gem install cocoapods
 ```
 
 ## Unit Tests
-I have added XCTestCase as part of Unit testing. So far the coverage is ~79% and is always subject to improvement. Just switch to 'LBGCodingTaskTests' target to run the test cases.
+I have added XCTestCase as part of Unit testing. So far the coverage is >85% and is always subject to improvement. Just switch to 'LBGCodingTaskTests' target to run the test cases.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.

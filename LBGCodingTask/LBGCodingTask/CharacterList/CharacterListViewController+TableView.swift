@@ -17,7 +17,7 @@ extension CharacterListViewController: UITableViewDelegate {
             withIdentifier: StoryboardIdentifiers.characterDetail.rawValue) as? CharacterDetailViewController else {
                 return
             }
-        let model = viewModel.getSelectedCharacterModel(listItem: characters[indexPath.row])
+        let model = CharacterDetailDataModel(provider: characters[indexPath.row])
         detailVC.model = model
         navigationController?.pushViewController(detailVC, animated: true)
     }
@@ -36,7 +36,7 @@ extension CharacterListViewController: SkeletonTableViewDataSource {
         else {
             return UITableViewCell()
         }
-        cell.configure(with: viewModel.getRowModel(item: (characters[indexPath.row])))
+        cell.configure(with: characters[indexPath.row])
         return cell
     }
 

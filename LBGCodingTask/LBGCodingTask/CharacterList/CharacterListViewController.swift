@@ -65,18 +65,27 @@ class CharacterListViewController: UIViewController {
         tableView.showAnimatedGradientSkeleton()
     }
 
-    /// Updates and reloads tableView based on API response
+    /// API response handling
     private func updateUI() {
         Task {
             do {
                 let result = try await viewModel.getCharacterList(for: APIEndPoints.characters.rawValue)
                 characters = result ?? []
-                tableView.stopSkeletonAnimation()
-                tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.1))
-                tableView.reloadData()
+                refreshTableData()
             } catch let error as APIError {
                 AlertHandler.shared.show(over: self, type: error)
             }
         }
+    }
+
+    /// Table data handling
+    private func refreshTableData() {
+        guard !characters.isEmpty else {
+            AlertHandler.shared.show(over: self, type: .invalidData)
+            return
+        }
+        tableView.stopSkeletonAnimation()
+        tableView.hideSkeleton(reloadDataAfter: true, transition: .crossDissolve(0.1))
+        tableView.reloadData()
     }
 }

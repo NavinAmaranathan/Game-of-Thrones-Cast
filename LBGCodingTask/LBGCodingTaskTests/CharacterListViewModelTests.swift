@@ -15,7 +15,7 @@ class CharacterListViewModelTests: XCTestCase {
     override func setUpWithError() throws {
         sut_viewModel = CharacterListViewModel(characterAPI: CharactersAPI())
     }
-    
+
     override func tearDownWithError() throws {
         sut_viewModel = nil
     }
@@ -38,7 +38,6 @@ class CharacterListViewModelTests: XCTestCase {
 
     func test_fetch_Characters_InvalidUrl_Failure() async throws {
         let expectation = XCTestExpectation(description: #function)
-        
         do {
             try await sut_viewModel?.getCharacterList(for: "")
         } catch let error as APIError {
@@ -48,30 +47,19 @@ class CharacterListViewModelTests: XCTestCase {
         }
     }
 
-    func test_CharacterDetailModel_Creation() {
-        let sutCharacterDetail = sut_viewModel?.getSelectedCharacterModel(listItem: Character(id: 0,
-                                                                                              firstName: "Daenerys",
-                                                                                              lastName: "Targaryen",
-                                                                                              fullName: "Daenerys Targaryen",
-                                                                                              title: "Mother of Dragons",
-                                                                                              family: "House Targaryen",
-                                                                                              image: "https://demo.character.image",
-                                                                                              imageURL: "https://demo.character.image"))
-        XCTAssertNotNil(sutCharacterDetail)
-    }
-
     func test_Show_CharacterDetail_Screen() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let sut_DetailViewController = storyboard.instantiateViewController(withIdentifier: StoryboardIdentifiers.characterDetail.rawValue) as? CharacterDetailViewController {
-            sut_DetailViewController.model = Values.sampleCharacter
-            XCTAssertEqual(sut_DetailViewController.model?.fullName, Values.sampleCharacter.fullName)
+            let model = CharacterDetailDataModel(provider: Values.sampleCharacter)
+            sut_DetailViewController.model = model
+            XCTAssertEqual(sut_DetailViewController.model?.provider.fullName, Values.sampleCharacter.fullName)
             sut_DetailViewController.loadViewIfNeeded()
         }
     }
 }
 
 extension CharacterListViewModelTests {
-    
+
     enum Values {
         static var sampleCharacter = Character(id: 0,
                                                firstName: "Daenerys",

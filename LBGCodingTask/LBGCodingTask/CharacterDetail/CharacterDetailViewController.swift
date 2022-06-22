@@ -37,14 +37,12 @@ class CharacterDetailViewController: UIViewController {
 
     // MARK: Properties
 
-    var model: CharacterDetailViewProvider?
-    private var viewModel: CharacterDetailViewModelData = CharacterDetailViewModel()
+    var model: CharacterDetailDataModel?
 
     // MARK: Life cycle methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.delegate = self
         updateUI()
     }
 
@@ -52,17 +50,15 @@ class CharacterDetailViewController: UIViewController {
 
     /// Updates the UI with the model values
     private func updateUI() {
-        title = model?.fullName
-        firstName.text = model?.firstName
-        lastName.text = model?.lastName
-        titleLabel.text = model?.title
-        family.text = model?.family
-        guard let imageUrl = model?.imageURL else { return }
-        imageView.sd_setImage(with: URL(string: imageUrl),
+        guard let dataModel = model?.provider else { return }
+        title = dataModel.fullName
+        firstName.text = dataModel.firstName
+        lastName.text = dataModel.lastName
+        titleLabel.text = dataModel.title
+        family.text = dataModel.family
+        imageView.sd_setImage(with: URL(string: dataModel.imageURL),
                               placeholderImage: UIImage(systemName: Constants.systemImagePerson),
                               options: .continueInBackground,
                               context: nil)
     }
 }
-
-extension CharacterDetailViewController: CharacterDetailViewModelDelegate {}

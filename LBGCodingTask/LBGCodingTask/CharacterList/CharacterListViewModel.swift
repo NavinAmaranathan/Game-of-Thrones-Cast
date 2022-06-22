@@ -10,8 +10,6 @@ import Foundation
 protocol CharacterListViewModelData {
     var isReachable: Bool { get }
     func getCharacterList(for urlString: String) async throws -> Characters?
-    func getRowModel(item: Character) -> CharacterCellViewProvider
-    func getSelectedCharacterModel(listItem: Character) -> CharacterDetailViewProvider
 }
 
 class CharacterListViewModel: CharacterListViewModelData {
@@ -45,19 +43,5 @@ class CharacterListViewModel: CharacterListViewModelData {
         } catch {
             throw APIError.failure(message: error.localizedDescription)
         }
-    }
-
-    ///  Get the  character details from table view selection
-    /// - Parameter listItem: Total character object
-    /// - Returns: Specific character detail model
-    func getSelectedCharacterModel(listItem: Character) -> CharacterDetailViewProvider {
-        return listItem
-    }
-
-    /// Get the data to display each cell in tableview
-    /// - Parameter item: Individual character data
-    /// - Returns: data needed for the cell
-    func getRowModel(item: Character) -> CharacterCellViewProvider {
-        return item
     }
 }
